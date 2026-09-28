@@ -33,6 +33,8 @@ def run_optimisation(
 
 
 if __name__ == "__main__":
+    from src.database import save_results
+
     result = run_optimisation()
 
     print(f"\nPortfolio as of {result['as_of'].date()}:")
@@ -40,3 +42,6 @@ if __name__ == "__main__":
     for ticker, pct in weights_pct.items():
         print(f"  {ticker:<5} {pct:>5}%")
     print(f"  Total: {weights_pct.sum():.1f}%")
+
+    saved = save_results(result)
+    print(f"\nSaved {saved} rows to Supabase.")
