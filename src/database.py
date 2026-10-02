@@ -18,7 +18,7 @@ def get_client() -> Client:
 
 
 def save_results(result: dict, client: Client | None = None) -> int:
-    """Save one run's forecasts and weights. Re-running on the same date overwrites that date."""
+    """Save one run's forecasts and weights. Re-running the same market and date overwrites it."""
     client = client or get_client()
     forecasts = result["forecasts"]
     weights = result["weights"]
@@ -26,6 +26,7 @@ def save_results(result: dict, client: Client | None = None) -> int:
 
     rows = [
         {
+            "market": result["market"],
             "as_of": as_of,
             "ticker": ticker,
             "last_price": float(forecasts.loc[ticker, "last_price"]),
@@ -36,14 +37,18 @@ def save_results(result: dict, client: Client | None = None) -> int:
         for ticker in forecasts.index
     ]
 
-    client.table(TABLE).upsert(rows, on_conflict="as_of,ticker").execute()
+    client.table(TABLE).upsert(rows, on_conflict="market,as_of,ticker").execute()
     return len(rows)
 
 
-def load_results(as_of: str | None = None, client: Client | None = None) -> pd.DataFrame:
-    """Load saved forecasts, optionally for one date only."""
+def load_results(
+    market: str | None = None, as_of: str | None = None, client: Client | None = None
+) -> pd.DataFrame:
+    """Load saved forecasts, optionally for one market and/or one date."""
     client = client or get_client()
     query = client.table(TABLE).select("*")
+    if market:
+        query = query.eq("market", market)
     if as_of:
         query = query.eq("as_of", as_of)
     rows = query.order("as_of", desc=True).execute().data

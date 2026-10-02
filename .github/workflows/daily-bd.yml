@@ -1,9 +1,9 @@
-name: Daily forecast (US)
+name: Daily forecast (BD)
 
 on:
   schedule:
-    - cron: "17 1 * * 2-6"  # 1:17am UTC (7:17am Dhaka), Tuesday to Saturday
-  workflow_dispatch:        # adds a "Run workflow" button for manual runs
+    - cron: "17 10 * * 0-4"  # 10:17am UTC (4:17pm Dhaka), Sunday to Thursday
+  workflow_dispatch:         # adds a "Run workflow" button for manual runs
 
 jobs:
   forecast:
@@ -25,4 +25,4 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-        run: poetry run python -m src.main --market US
+        run: poetry run python -m src.main --market BD
