@@ -69,3 +69,18 @@ def test_model_predicts_a_small_return():
 def test_predict_before_fit_raises_error():
     with pytest.raises(RuntimeError):
         ProphetModel().predict_next_return()
+
+
+
+# ---------- trading days ----------
+
+def test_dse_next_trading_day_after_thursday_is_sunday():
+    thursday = pd.Timestamp("2026-10-01")
+    next_day = thursday + pd.offsets.CustomBusinessDay(weekmask="Sun Mon Tue Wed Thu")
+    assert next_day == pd.Timestamp("2026-10-04")  # Sunday
+
+
+def test_us_next_trading_day_after_friday_is_monday():
+    friday = pd.Timestamp("2026-10-02")
+    next_day = friday + pd.offsets.CustomBusinessDay(weekmask="Mon Tue Wed Thu Fri")
+    assert next_day == pd.Timestamp("2026-10-05")  # Monday
