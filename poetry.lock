@@ -69,6 +69,32 @@ files = [
 ]
 
 [[package]]
+name = "bdshare"
+version = "1.2.7"
+description = "A utility for crawling historical and Real-time Quotes of DSE(Dhaka Stock Exchange)"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "bdshare-1.2.7-py3-none-any.whl", hash = "sha256:818eb32c62bfae84e41b51e2ff991aad8ab33f57b00c80a48e91380ad5cb762b"},
+    {file = "bdshare-1.2.7.tar.gz", hash = "sha256:122c0e0b42a968b6b7c27ff203d547af69b1a7948dae62570a5b2897cdf65703"},
+]
+
+[package.dependencies]
+beautifulsoup4 = "*"
+certifi = "*"
+html5lib = "*"
+lxml = "*"
+pandas = "*"
+requests = "*"
+
+[package.extras]
+mcp = ["mcp (>=1.0.0,<2)"]
+polars = ["polars"]
+stream = ["websockets (>=12.0)"]
+ta = ["ta"]
+
+[[package]]
 name = "beautifulsoup4"
 version = "4.15.0"
 description = "Screen-scraping library"
@@ -807,6 +833,28 @@ files = [
     {file = "hpack-4.2.0-py3-none-any.whl", hash = "sha256:858ac0b02280fa582b5080d68db0899c62a80375e0e5413a74970c5e518b6986"},
     {file = "hpack-4.2.0.tar.gz", hash = "sha256:0895cfa3b5531fc65fe439c05eb65144f123bf7a394fcaa56aa423548d8e45c0"},
 ]
+
+[[package]]
+name = "html5lib"
+version = "1.1"
+description = "HTML parser based on the WHATWG HTML specification"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+groups = ["main"]
+files = [
+    {file = "html5lib-1.1-py2.py3-none-any.whl", hash = "sha256:0d78f8fde1c230e99fe37986a60526d7049ed4bf8a9fadbad5f00e22e58e041d"},
+    {file = "html5lib-1.1.tar.gz", hash = "sha256:b2e5b40261e20f354d198eae92afc10d750afb487ed5e50f9c4eaf07c184146f"},
+]
+
+[package.dependencies]
+six = ">=1.9"
+webencodings = "*"
+
+[package.extras]
+all = ["chardet (>=2.2)", "genshi", "lxml ; platform_python_implementation == \"CPython\""]
+chardet = ["chardet (>=2.2)"]
+genshi = ["genshi"]
+lxml = ["lxml ; platform_python_implementation == \"CPython\""]
 
 [[package]]
 name = "httpcore"
@@ -3320,6 +3368,22 @@ files = [
 watchmedo = ["PyYAML (>=3.10)"]
 
 [[package]]
+name = "webencodings"
+version = "0.6.1"
+description = "Character encoding aliases for legacy web content"
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+files = [
+    {file = "webencodings-0.6.1-py3-none-any.whl", hash = "sha256:7fab6269c8bf237c657876b52058ccb182e861518d1c695c1a9aaa8c1c105d5b"},
+    {file = "webencodings-0.6.1.tar.gz", hash = "sha256:565f9ad031c702dae404e27a099e3e09186a3ab1b9520f06d215502b651fd910"},
+]
+
+[package.extras]
+doc = ["furo", "sphinx"]
+test = ["pytest", "ruff"]
+
+[[package]]
 name = "websockets"
 version = "15.0.1"
 description = "An implementation of the WebSocket Protocol (RFC 6455 & 7692)"
@@ -3584,4 +3648,4 @@ repair = ["scikit-learn (>=1.0)", "scipy (>=1.6.3)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<3.13"
-content-hash = "2207bfde57c65451e9a98d1525ab43ea8eeaa3c2a5348e19e1193df515506a7e"
+content-hash = "32622de86d729206284242f882e0cabcfeb443ba6f1e46a54f2ee475ff61459f"
