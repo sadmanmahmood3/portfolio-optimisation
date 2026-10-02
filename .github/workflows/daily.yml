@@ -2,7 +2,7 @@ name: Daily forecast
 
 on:
   schedule:
-    - cron: "0 9 * * 2-6"  # 9am UTC (3pm Dhaka), Tuesday to Saturday
+      - cron: "17 1 * * 2-6"  # 1:17am UTC (7:17am Dhaka), Tuesday to Saturday
   workflow_dispatch:        # adds a "Run workflow" button for manual runs
 
 jobs:
