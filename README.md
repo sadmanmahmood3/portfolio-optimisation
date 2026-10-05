@@ -19,7 +19,7 @@ A production-style machine learning pipeline that forecasts stock prices with Fa
 
 | Workflow | When | What it does |
 |---|---|---|
-| **Tests** | Every push | Runs the pytest suite |
+| **Tests** | Every push | Runs pytest suite |
 | **Daily forecast** | Weekdays, 09:00 UTC | Runs the full pipeline and saves new results |
 
 ## Tech stack
