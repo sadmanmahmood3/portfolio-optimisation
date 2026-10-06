@@ -8,7 +8,7 @@ A production-style machine learning pipeline that forecasts stock prices with Fa
 
 ## How it works
 
-1. **Extract**: download the daily closing prices with `yfinance`
+1. **Extract**: download daily closing prices with `yfinance`
 2. **Process**: clean gaps in the objects and reshape the data for Prophet
 3. **Forecast**: train one Prophet model per stock and predict the next trading day's return
 4. **Optimise**: find the weights with the best return per unit of risk (Sharpe ratio) using SciPy's SLSQP solver, with each stock kept between 5% and 30%
