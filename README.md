@@ -67,4 +67,4 @@ streamlit run src/streamlit_app.py    # open the dashboard
 ```
 
 ## Credits
-Egor Howell
+Egor Howell video
